@@ -4,14 +4,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-import org.springframework.data.annotation.Id;
+import com.henjuck.webservice.domain.BaseTimeEntity;
+
+// import org.springframework.data.annotation.Id;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 
 /**
  * Post
@@ -20,7 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,8 +37,7 @@ public class Posts {
     private String author;
 
     @Builder
-    public Posts(Long id, String title, String content, String author) {
-        this.id = id;
+    public Posts(String title, String content, String author) {
         this.title = title;
         this.content = content;
         this.author = author;

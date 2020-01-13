@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * PostsRepository
  */
-public interface PostsRepository extends JpaRepository<Posts, Long>{
+public interface PostsRepository extends JpaRepository<Posts, Long> {
 
-    
 }

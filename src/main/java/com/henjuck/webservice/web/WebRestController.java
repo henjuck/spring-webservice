@@ -1,7 +1,7 @@
 package com.henjuck.webservice.web;
 
-import com.henjuck.webservice.domain.posts.PostsRepository;
 import com.henjuck.webservice.dto.posts.PostsSaveRequestDto;
+import com.henjuck.webservice.service.PostsService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +18,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor // 모든 필드를 인자값으로 하는 생성자를 Lombok의 @AllArgsConstructor이 대신 생성해 준 다.
 public class WebRestController {
 
-    private PostsRepository postsRepository;
+    private PostsService postsService;
 
     @GetMapping("/hello")
     public String hello() {
@@ -26,8 +26,8 @@ public class WebRestController {
     }
 
     @PostMapping("/posts")
-    public void savePosts(@RequestBody PostsSaveRequestDto dto){
-        postsRepository.save(dto.toEntity());
+    public Long savePosts(@RequestBody PostsSaveRequestDto dto){
+        return postsService.save(dto);
     }
 
 }

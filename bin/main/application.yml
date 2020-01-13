@@ -1,12 +1,35 @@
 spring:
+  profiles:
+    active: local # 기본 환경 선택
+
+
+# local 환경
+---
+spring:
+  profiles: local
+  datasource:
+    data: classpath:data-h2.sql # 시작할때 실행시킬 script
+    
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+
+  # jpa:
+  #   hibernate:
+  #     ddl-auto: update
+  #   properties:
+  #     hibernate:
+  #       show_sql: true
+  #       use_sql_comments: true
+  #       format_sql: true
   h2:
     console:
       enabled: true
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    properties:
-      hibernate:
-        show_sql: true
-        use_sql_comments: true
-        format_sql: true
+
+  # datasource:
+  #   driver-class-name: org.h2.Driver  #h2 드라이버 설정
+  #   url: jdbc:h2:file:~/Develop/Github/SpringBlogExam/test_db;AUTO_SERVER=TRUE  #접속 URL, C:\Users\1909\Develop\Github\SpringBlogExam
+  #   username: test  # 사용자 이름 (로그인 시 사용)
+  #   password: 1234  # 사용자 암호 (로그인 시 사용)
+
